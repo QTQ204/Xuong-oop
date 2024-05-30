@@ -1,0 +1,21 @@
+{
+    "name": "quang/xuongoop",
+    "autoload": {
+        "psr-4": {
+            "Quang\\Xuongoop\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "QTQ204",
+            "email": "quanglpmph45121@fpt.edu.vn"
+        }
+    ],
+    "require": {
+        "bramus/router": "~1.6",
+        "eftec/bladeone": "^4.13",
+        "rakit/validation": "^1.4",
+        "vlucas/phpdotenv": "^5.6",
+        "doctrine/dbal": "^4.0"
+    }
+}
