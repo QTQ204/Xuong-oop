@@ -1,30 +1,26 @@
 <?php
 
 namespace Quang\Xuongoop\Commons;
-use use eftec\bladeone\BladeOne;
+use eftec\bladeone\BladeOne;
 
 
-class Controller{
-      protected function renderViewClient($view, $data){
-        $templatePath = __DIR__ .'/../../View/Client';
-        $compiledPath = __DIR__ .'/../../View/Compiles';
+class Controller
+{
+    protected function renderViewClient($view, $data = []) {
+        $templatePath = __DIR__ . '/../Views/Client';
+        $compiledPath = __DIR__ . '/../Views/Compiles';
 
-        $bladeOne = new BladeOne($templatePath, $compiledPath);
+        $blade = new BladeOne($templatePath, $compiledPath);
 
-        
-        
-        echo $bladeOne->run($view, $data);
-       }
-      protected function renderView($view, $data){
-        $templatePath = __DIR__ .'/../../View/Client';
-        $compiledPath = __DIR__ .'/../../View/Compiles';
+        echo $blade->run($view, $data);
+    }
 
-        $bladeOne = new BladeOne($templatePath, $compiledPath);
+    protected function renderViewAdmin($view, $data = []) {
+        $templatePath = __DIR__ . '/../Views/Admin';
+        $compiledPath = __DIR__ . '/../Views/Compiles';
 
-        
-        
-        echo $bladeOne->run($view, $data);
+        $blade = new BladeOne($templatePath, $compiledPath);
 
-
-      }
+        echo $blade->run($view, $data);
+    }
 }
