@@ -1,6 +1,6 @@
 <?php 
 
-
+const PATH_ROOT = __DIR__ . '/';
 
 
 if (!function_exists('asset')) {

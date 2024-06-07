@@ -3,16 +3,26 @@
 namespace Quang\Xuongoop\Controllers\Client;
 
 use Quang\Xuongoop\Commons\Controller;
-
+use Quang\Xuongoop\Models\Product;
 class ProductController extends Controller
 {
-      public function index()
-      {
-            echo __CLASS__ . '@' . __FUNCTION__;
-      }
+    private Product $product;
 
-      public function detail($id)
-      {
-            echo __CLASS__ . '@' . __FUNCTION__ . '@' . $id;
-      }
+    public function __construct()
+    {
+        $this->product = new Product();
+    }
+
+    public function index() {
+        echo __CLASS__ . '@' . __FUNCTION__;
+    }
+
+    public function detail($id) {
+        
+        $product = $this->product->findByID($id);
+
+        $this->renderViewClient('product-detail', [
+            'product' => $product
+        ]);
+    }
 }

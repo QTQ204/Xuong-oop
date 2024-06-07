@@ -14,8 +14,8 @@
                 <span>Dashboard</span>
             </a>
             <ul>
-                <li><a class="active" href="{{ url('admin/users/') }}">User</a></li>
-                <li><a href="index_2.html">Default</a></li>
+                <li><a class="active" href="{{ url('admin/users') }}">User</a></li>
+                <li><a href="{{ url('admin/products') }}">Product</a></li>
                 <li><a href="index_3.html">Dark Menu</a></li>
             </ul>
         </li>

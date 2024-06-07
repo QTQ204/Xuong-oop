@@ -11,6 +11,7 @@
 //      DELETE  -> USER/ID      -> DELETE ($id)   -> XÓA BẢ
 use Quang\Xuongoop\Controllers\Admin\UserController;
 use Quang\Xuongoop\Controllers\Admin\DashboardController;
+use Quang\Xuongoop\Controllers\Admin\ProductController;
 
 // $router->before('GET|POST', '/admin/*.*', function() {
 //     if (! isset($_SESSION['user'])) {
@@ -33,5 +34,20 @@ $router->mount('/admin', function () use ($router) {
         $router->get('/{id}/delete',    UserController::class . '@delete');
     });
     
+});
+$router->mount('/admin', function () use ($router) {
+
+    $router->get('/', DashboardController::class . '@dashboard');
+// CRUD USER
+    $router->mount('/products', function () use ($router) {
+        $router->get('/',               ProductController::class . '@index');  // Danh sách
+        $router->get('/create',         ProductController::class . '@create'); // Show form thêm mới
+        $router->post('/store',         ProductController::class . '@store');  // Lưu mới vào DB
+        $router->get('/{id}/show',      ProductController::class . '@show');   // Xem chi tiết
+        $router->get('/{id}/edit',      ProductController::class . '@edit');   // Show form sửa
+        $router->post('/{id}/update',   ProductController::class . '@update'); // Lưu sửa vào DB
+        $router->get('/{id}/delete',    ProductController::class . '@delete'); // Xóa
+    });
+
 });
 

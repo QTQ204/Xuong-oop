@@ -29,109 +29,113 @@ class Model
     }
 
     // CRUD
-   // CRUD
-   public function all()
-   {
-       return $this->queryBuilder
-       ->select('*')
-       ->from($this->tableName)
-       ->orderBy('id', 'desc')
-       ->fetchAllAssociative();
-   }
+    // CRUD
+    public function getConnection()
+    {
+        return $this->conn;
+    }
+    public function all()
+    {
+        return $this->queryBuilder
+            ->select('*')
+            ->from($this->tableName)
+            ->orderBy('id', 'desc')
+            ->fetchAllAssociative();
+    }
 
-   public function count()
-   {
-       return $this->queryBuilder
-       ->select("COUNT(*) as $this->tableName")
-       ->from($this->tableName)
-       ->fetchOne();
-   }
+    public function count()
+    {
+        return $this->queryBuilder
+            ->select("COUNT(*) as $this->tableName")
+            ->from($this->tableName)
+            ->fetchOne();
+    }
 
-   public function paginate($page = 1, $perPage = 5)
-   {
-       
-       $queryBuilder = clone($this->queryBuilder);
-       
-       $totalPage = ceil($this->count() / $perPage);
+    public function paginate($page = 1, $perPage = 5)
+    {
 
-       $offset = $perPage * ($page - 1);
+        $queryBuilder = clone ($this->queryBuilder);
 
-       $data = $this->queryBuilder
-       ->select('*')
-       ->from($this->tableName)
-       ->setFirstResult($offset)
-       ->setMaxResults($perPage)
-       ->orderBy('id', 'desc')
-       ->fetchAllAssociative();
+        $totalPage = ceil($this->count() / $perPage);
 
-       
+        $offset = $perPage * ($page - 1);
 
-       return [$data, $totalPage];
-   }
+        $data = $this->queryBuilder
+            ->select('*')
+            ->from($this->tableName)
+            ->setFirstResult($offset)
+            ->setMaxResults($perPage)
+            ->orderBy('id', 'desc')
+            ->fetchAllAssociative();
 
-   public function findByID($id)
-   {
-       return $this->queryBuilder
-           ->select('*')
-           ->from($this->tableName)
-           ->where('id = ?')
-           ->setParameter(0, $id)
-           ->fetchAssociative();
-   }
 
-   public function insert(array $data)
-   {
-       if (!empty($data)) {
-           $query = $this->queryBuilder->insert($this->tableName);
 
-           $index = 0;
-           foreach($data as $key => $value) {
-               $query->setValue($key, '?')->setParameter($index, $value);
-               
-               ++$index;
-           }
+        return [$data, $totalPage];
+    }
 
-           $query->executeQuery();
+    public function findByID($id)
+    {
+        return $this->queryBuilder
+            ->select('*')
+            ->from($this->tableName)
+            ->where('id = ?')
+            ->setParameter(0, $id)
+            ->fetchAssociative();
+    }
 
-           return true;
-       }
-       
-       return false;
-   }
+    public function insert(array $data)
+    {
+        if (!empty($data)) {
+            $query = $this->queryBuilder->insert($this->tableName);
 
-   public function update($id, array $data)
-   {
-       if (!empty($data)) {
-           $query = $this->queryBuilder->update($this->tableName);
+            $index = 0;
+            foreach ($data as $key => $value) {
+                $query->setValue($key, '?')->setParameter($index, $value);
 
-           $index = 0;
-           foreach($data as $key => $value) {
-               $query->set($key, '?')->setParameter($index, $value);
+                ++$index;
+            }
 
-               ++$index;
-           }
+            $query->executeQuery();
 
-           $query->where('id = ?')
-               ->setParameter(count($data), $id)
-               ->executeQuery();
+            return true;
+        }
 
-           return true;
-       }
-       
-       return false;
-   }
+        return false;
+    }
 
-   public function delete($id)
-   {        
-       return $this->queryBuilder
-           ->delete($this->tableName)
-           ->where('id = ?')
-           ->setParameter(0, $id)
-           ->executeQuery();
-   }
+    public function update($id, array $data)
+    {
+        if (!empty($data)) {
+            $query = $this->queryBuilder->update($this->tableName);
 
-   public function __destruct()
-   {
-       $this->conn = null;
-   }
+            $index = 0;
+            foreach ($data as $key => $value) {
+                $query->set($key, '?')->setParameter($index, $value);
+
+                ++$index;
+            }
+
+            $query->where('id = ?')
+                ->setParameter(count($data), $id)
+                ->executeQuery();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function delete($id)
+    {
+        return $this->queryBuilder
+            ->delete($this->tableName)
+            ->where('id = ?')
+            ->setParameter(0, $id)
+            ->executeQuery();
+    }
+
+    public function __destruct()
+    {
+        $this->conn = null;
+    }
 }

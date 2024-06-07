@@ -9,6 +9,8 @@ use Quang\Xuongoop\Controllers\Client\HomeController;
 use Quang\Xuongoop\Controllers\Client\ProductController;
 use Quang\Xuongoop\Controllers\Client\ContactController;
 use Quang\Xuongoop\Controllers\Client\LoginController;
+use Ductong\XuongOop\Controllers\Client\CartController;
+use Ductong\XuongOop\Controllers\Client\OrderController;
 
 
 
