@@ -13,12 +13,12 @@ use Quang\Xuongoop\Controllers\Admin\UserController;
 use Quang\Xuongoop\Controllers\Admin\DashboardController;
 use Quang\Xuongoop\Controllers\Admin\ProductController;
 
-// $router->before('GET|POST', '/admin/*.*', function() {
-//     if (! isset($_SESSION['user'])) {
-//         header('location: ' . url('login') );
-//         exit();
-//     }
-// });
+$router->before('GET|POST', '/admin/*.*', function() {
+    if (! isset($_SESSION['user'])) {
+        header('location: ' . url('login') );
+        exit();
+    }
+});
 
 $router->mount('/admin', function () use ($router) {
 
