@@ -1,6 +1,6 @@
 <nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y">
     <div class="logo d-flex justify-content-between">
-        <a href="index-2.html"><img src="{{ asset('assets/admin/img/logo.png') }}" alt></a>
+        <a href="{{ asset('admin/') }}"><img src="{{ asset('assets/admin/img/logo.png') }}" alt></a>
         <div class="sidebar_close_icon d-lg-none">
             <i class="ti-close"></i>
         </div>
@@ -9,25 +9,53 @@
         <li class="mm-active">
             <a class="has-arrow" href="#" aria-expanded="false">
                 <div class="icon_menu">
-                    <img src="{{ asset('assets/admin/img/menu-icon/dashboard.svg') }}" alt>
+                <span class="material-symbols-outlined">dashboard</span>
                 </div>
                 <span>Dashboard</span>
             </a>
             <ul>
-                <li><a class="active" href="{{ url('admin/users') }}">User</a></li>
-                <li><a href="{{ url('admin/products') }}">Product</a></li>
-                <li><a href="index_3.html">Dark Menu</a></li>
+                <li><a class="active" href="{{ asset('admin/users') }}">User</a></li>
+                <li><a href="{{ asset('admin/products') }}">Product</a></li>
+                <li><a href="{{ asset('admin/categories') }}">Categories</a></li>
+            </ul>
+        </li>
+        
+        <li class>
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <div class="icon_menu">
+                 <span class="material-symbols-outlined">category</span>
+                </div>
+                <span>Category</span>
+            </a>
+            <ul>
+                <li><a class="active" href="{{ asset('admin/categories/create') }}">Add Category</a></li>
             </ul>
         </li>
 
         <li class>
-            <a href="Board.html" aria-expanded="false">
+            <a class="has-arrow" href="#" aria-expanded="false">
                 <div class="icon_menu">
-                    <img src="{{ asset('assets/admin/img/menu-icon/5.svg') }}" alt>
+                  <span class="material-symbols-outlined">person</span>
                 </div>
-                <span>Board</span>
+                <span>User</span>
             </a>
+            <ul>
+                <li><a class="active" href="{{ asset('admin/users/create') }}">Add User</a></li>
+            </ul>
+        </li>
+        
+        <li class>
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <div class="icon_menu">
+                <span class="material-symbols-outlined">inventory_2</span>
+                </div>
+                <span>Products</span>
+            </a>
+            <ul>
+                <li><a class="active" href="{{ asset('admin/products/create') }}">Add Products</a></li>
+            </ul>
         </li>
 
     </ul>
+
 </nav>

@@ -11,6 +11,7 @@ use Quang\Xuongoop\Models\Product;
 
 class CartController extends Controller
 {
+
     private Product $product;
     private Cart $cart;
     private CartDetail $cartDetail;
@@ -46,7 +47,7 @@ class CartController extends Controller
         if (isset($_SESSION['user'])) {
             $conn = $this->cart->getConnection();
 
-            // $conn->beginTransaction();
+            $conn->beginTransaction();
             try {
 
                 $cart = $this->cart->findByUserID($_SESSION['user']['id']);
@@ -71,11 +72,11 @@ class CartController extends Controller
                     ]);
                 }
 
-                // $conn->commit();
+                $conn->commit();
             } catch (\Throwable $th) {
                 // echo $th->getMessage();die;
                 //throw $th;
-                // $conn->rollBack();
+                $conn->rollBack();
             }
         }
 

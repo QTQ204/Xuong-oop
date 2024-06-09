@@ -17,3 +17,4 @@
 <link rel="stylesheet" href="{{ asset('assets/admin/css/metisMenu.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/admin/css/style1.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/admin/css/colors/default.css') }}" id="colorSkinCSS">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />

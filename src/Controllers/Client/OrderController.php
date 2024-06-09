@@ -79,7 +79,7 @@ class OrderController extends Controller
             unset($_SESSION['cart_id']);
         }
 
-        header('Location: ' . url());
+        header('Location: ' . url("/product"));
         exit;
     }
 }
